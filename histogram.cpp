@@ -1,6 +1,14 @@
 #include "histogram.h"
 #include <iostream>
 using namespace std;
+void color_add(const size_t bin_count,vector <string>& color)
+{
+    for (size_t i= 0; i < bin_count; i++)
+    {
+        cerr << "Enter number color- "<< i+1 <<" ( 000000 - 999999) = ";
+        cin >> color[i];
+    }
+}
 void find_minmax(const vector<double>& numbers, double& min, double& max)
 {
     min = numbers[0];
@@ -47,7 +55,7 @@ void svg_rect(double x, double y, double width, double height, string stroke, st
 }
 
 void
-show_histogram_svg(const vector<size_t>& bins, const size_t bin_count)
+show_histogram_svg(const vector<size_t>& bins, const size_t bin_count, vector <string>& color)
 {
     const auto IMAGE_WIDTH = 400;
     const auto IMAGE_HEIGHT = 300;
@@ -69,15 +77,17 @@ show_histogram_svg(const vector<size_t>& bins, const size_t bin_count)
         height = 1;
     else
     height = (static_cast < double > (MAX_WIGTH) / max_bins );
-
     double top = 0;
     svg_begin(IMAGE_WIDTH, IMAGE_HEIGHT);
+    int help_color = 0;
     for (size_t bin : bins )
     {
+        string COLOR = "#" + color[help_color];
         const double bin_width = BLOCK_WIDTH * bin;
         svg_text(TEXT_LEFT, top + TEXT_BASELINE, to_string(bin));
-        svg_rect(TEXT_WIDTH , top, bin_width * height, BIN_HEIGHT, "black", "#000000");
+        svg_rect(TEXT_WIDTH , top, bin_width * height, BIN_HEIGHT, "black", COLOR);
         top += BIN_HEIGHT;
+        help_color ++;
     }
     svg_end();
 }

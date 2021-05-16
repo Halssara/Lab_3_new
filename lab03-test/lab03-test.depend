@@ -1,9 +1,11 @@
 # depslib dependency file v1.0
-1621199118 source:d:\labs\lab_3\histogram.cpp
+1621201159 source:d:\labs\lab_3\histogram.cpp
 	"histogram.h"
+	<iostream>
 
-1621198964 d:\labs\lab_3\histogram.h
+1621201277 d:\labs\lab_3\histogram.h
 	<vector>
+	<string>
 
 1621200400 source:d:\labs\lab_3\test.cpp
 	"histogram.h"

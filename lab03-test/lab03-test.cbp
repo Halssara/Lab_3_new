@@ -33,7 +33,7 @@
 		</Compiler>
 		<Unit filename="../histogram.cpp" />
 		<Unit filename="../histogram.h" />
-		<Unit filename="test.cpp" />
+		<Unit filename="../test.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

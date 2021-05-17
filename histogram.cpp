@@ -1,14 +1,7 @@
 #include "histogram.h"
 #include <iostream>
 using namespace std;
-void color_add(const size_t bin_count,vector <string>& color, istream& in)
-{
-    for (size_t i= 0; i < bin_count; i++)
-    {
-        //cerr << "Enter number color- "<< i+1 <<" ( 000000 - 999999) = "; ¬вод если пользователь сам его выполн€ет, а не ввод из текстового документа.
-        in >> color[i];
-    }
-}
+
 void find_minmax(const vector<double>& numbers, double& min, double& max)
 {
     min = numbers[0];
@@ -26,68 +19,41 @@ void find_minmax(const vector<double>& numbers, double& min, double& max)
     }
 }
 
-void
-svg_begin(double width, double height)
+vector <size_t>
+make_histogram (const vector<double>& numbers, const size_t& number_count, const size_t& bin_count)
 {
-    cout << "<?xml version='1.0' encoding='UTF-8'?>\n";
-    cout << "<svg ";
-    cout << "width='" << width << "' ";
-    cout << "height='" << height << "' ";
-    cout << "viewBox='0 0 " << width << " " << height << "' ";
-    cout << "xmlns='http://www.w3.org/2000/svg'>\n";
+    vector <size_t> bins (bin_count);
+    double min, max;
+    find_minmax(numbers, min, max);
+    double bin_size = (max - min) / bin_count;
+    for (size_t i = 0; i < number_count; i++)
+        {
+            bool found = false;
+            for (size_t j = 0; (j < bin_count - 1) && !found; j++)
+            {
+                auto lo = min + j * bin_size;
+                auto hi = min + (j + 1) * bin_size;
+                if ((lo <= numbers[i]) && (numbers[i] < hi))
+                {
+                    bins[j]++;
+                    found = true;
+                }
+            }
+            if (!found)
+            {
+                bins[bin_count - 1]++;
+            }
+        }
+    return bins;
 }
 
-void
-svg_end()
+vector<double>
+input_numbers(size_t count)
 {
-    cout << "</svg>\n";
-}
-
-void
-svg_text(double left, double baseline, string text)
-{
-    cout << "<text x='" << left << "' y='" << baseline << "'>" << text << "</text>";
-}
-
-void svg_rect(double x, double y, double width, double height, string stroke, string fill)
-{
-    cout <<"<rect x='"<<x<<"' y='"<<y<<"' width='"<<width<<"' height='"<<height<<"' stroke='"<<stroke<<"' fill='"<<fill<<"' />";
-}
-
-void
-show_histogram_svg(const vector<size_t>& bins, const size_t bin_count, vector <string>& color)
-{
-    const auto IMAGE_WIDTH = 400;
-    const auto IMAGE_HEIGHT = 300;
-    const auto TEXT_LEFT = 20;
-    const auto TEXT_BASELINE = 20;
-    const auto TEXT_WIDTH = 50;
-    const auto BIN_HEIGHT = 30;
-    const auto BLOCK_WIDTH = 10;
-    const auto MAX_WIGTH = IMAGE_WIDTH - TEXT_WIDTH;
-    size_t max_bins = bins [0];
-    for (size_t i = 0; i < bin_count; i++)
+    vector<double> result(count);
+    for (size_t i = 0; i < count; i++)
     {
-        if (bins [i] > max_bins)
-        max_bins = bins[i] ;
+        cin >> result[i];
     }
-    max_bins = max_bins * BLOCK_WIDTH;
-    double height;
-    if (max_bins <= MAX_WIGTH)
-        height = 1;
-    else
-    height = (static_cast < double > (MAX_WIGTH) / max_bins );
-    double top = 0;
-    svg_begin(IMAGE_WIDTH, IMAGE_HEIGHT);
-    int help_color = 0;
-    for (size_t bin : bins )
-    {
-        string COLOR = "#" + color[help_color];
-        const double bin_width = BLOCK_WIDTH * bin;
-        svg_text(TEXT_LEFT, top + TEXT_BASELINE, to_string(bin));
-        svg_rect(TEXT_WIDTH , top, bin_width * height, BIN_HEIGHT, "black", COLOR);
-        top += BIN_HEIGHT;
-        help_color ++;
-    }
-    svg_end();
+    return result;
 }

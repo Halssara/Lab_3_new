@@ -74,9 +74,6 @@ void test_color()
 {
 
 vector <string> colors (3);
-string col0 = "000000";
-string col1 = "111111";
-string col2 = "222222";
 stringstream input("000000 111111 222222");
 
 color_add(3, colors, input);

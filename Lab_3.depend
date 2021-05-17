@@ -12,16 +12,20 @@
 	"histogram.h"
 	<iostream>
 
-1621241479 source:c:\users\u211-07\desktop\lab_3\histogram.cpp
+1621243966 source:c:\users\u211-07\desktop\lab_3\histogram.cpp
 	"histogram.h"
 	<iostream>
 
-1621235348 c:\users\u211-07\desktop\lab_3\histogram.h
+1621243967 c:\users\u211-07\desktop\lab_3\histogram.h
 	<vector>
 	<string>
 
-1621235348 source:c:\users\u211-07\desktop\lab_3\main.cpp
+1621243967 source:c:\users\u211-07\desktop\lab_3\main.cpp
 	<iostream>
 	<vector>
 	"histogram.h"
+
+1621243967 source:c:\users\u211-07\desktop\lab_3\svg.cpp
+	"histogram.h"
+	<iostream>
 

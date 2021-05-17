@@ -5,7 +5,7 @@ void color_add(const size_t bin_count,vector <string>& color, istream& in)
 {
     for (size_t i= 0; i < bin_count; i++)
     {
-        //cerr << "Enter number color- "<< i+1 <<" ( 000000 - 999999) = ";
+        //cerr << "Enter number color- "<< i+1 <<" ( 000000 - 999999) = "; ¬вод если пользователь сам его выполн€ет, а не ввод из текстового документа.
         in >> color[i];
     }
 }

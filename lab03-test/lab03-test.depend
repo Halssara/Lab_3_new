@@ -12,3 +12,18 @@
 	<vector>
 	<cassert>
 
+1621239345 source:c:\users\u211-07\desktop\lab_3\histogram.cpp
+	"histogram.h"
+	<iostream>
+
+1621235348 c:\users\u211-07\desktop\lab_3\histogram.h
+	<vector>
+	<string>
+
+1621239599 source:c:\users\u211-07\desktop\lab_3\test.cpp
+	"histogram.h"
+	<vector>
+	<cassert>
+	<iostream>
+	<sstream>
+

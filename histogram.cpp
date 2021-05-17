@@ -1,12 +1,12 @@
 #include "histogram.h"
 #include <iostream>
 using namespace std;
-void color_add(const size_t bin_count,vector <string>& color)
+void color_add(const size_t bin_count,vector <string>& color, istream& in)
 {
     for (size_t i= 0; i < bin_count; i++)
     {
-        cerr << "Enter number color- "<< i+1 <<" ( 000000 - 999999) = ";
-        cin >> color[i];
+        //cerr << "Enter number color- "<< i+1 <<" ( 000000 - 999999) = ";
+        in >> color[i];
     }
 }
 void find_minmax(const vector<double>& numbers, double& min, double& max)

@@ -49,7 +49,7 @@ int main ()
     cerr << "Enter bin count:";
     cin >> bin_count;
     vector <string> color(bin_count);
-    color_add(bin_count, color);
+    color_add(bin_count, color, cin);
     const auto numbers = input_numbers(number_count);
     double min, max;
     find_minmax(numbers, min, max);

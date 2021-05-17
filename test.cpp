@@ -1,7 +1,9 @@
 #include "histogram.h"
 #include <vector>
 #include <cassert>
-
+#include <iostream>
+#include <sstream>
+using namespace std;
 void test_positive()
 
 {
@@ -66,26 +68,29 @@ assert(max == 1);
 
 }
 
-void test_none()
+
+void test_color()
 
 {
 
-double min = 0;
+vector <string> colors (3);
+string col0 = "000000";
+string col1 = "111111";
+string col2 = "222222";
+stringstream input("000000 111111 222222");
 
-double max = 0;
-
-find_minmax({}, min, max);
-
-assert(min == 1);
-
-assert(max == 2);
-
+color_add(3, colors, input);
+assert(colors[0] == "000000");
+assert(colors[1] == "111111");
+assert(colors[2] == "222222");
 }
+
+
 
 int main()
 
 {
-
+test_color();
 test_positive();
 
 test_negative();
@@ -94,6 +99,5 @@ test_equally();
 
 test_alone();
 
-test_none();
 
 }

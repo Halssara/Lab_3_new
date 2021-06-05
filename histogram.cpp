@@ -48,12 +48,12 @@ make_histogram (const vector<double>& numbers, const size_t& number_count, const
 }
 
 vector<double>
-input_numbers(size_t count)
+input_numbers(istream& in, size_t count)
 {
     vector<double> result(count);
     for (size_t i = 0; i < count; i++)
     {
-        cin >> result[i];
+        in >> result[i];
     }
     return result;
 }

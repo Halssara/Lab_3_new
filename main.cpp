@@ -15,7 +15,7 @@ int main ()
     cin >> bin_count;
     vector <string> color(bin_count);
     color_add(bin_count, color, cin);
-    const auto numbers = input_numbers(number_count);
+    const auto numbers = input_numbers(cin, number_count);
     const auto bins = make_histogram(numbers, number_count, bin_count);
     show_histogram_svg(bins, bin_count, color);
     getchar ();

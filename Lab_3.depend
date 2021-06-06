@@ -1,7 +1,9 @@
 # depslib dependency file v1.0
-1622987983 source:d:\labs\lab_3\main.cpp
+1623004351 source:d:\labs\lab_3\main.cpp
 	<iostream>
 	<vector>
+	<sstream>
+	<string>
 	"histogram.h"
 	<curl/curl.h>
 

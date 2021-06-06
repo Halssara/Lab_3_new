@@ -1,5 +1,8 @@
 #include <iostream>
 #include <vector>
+#include <sstream>
+#include <string>
+
 using namespace std;
 #include "histogram.h"
 #include <curl/curl.h>
@@ -25,27 +28,49 @@ Input read_input (istream& in, bool prompt)
     }
     return data;
 }
-int main (int argc, char* argv[])
+size_t
+write_data(void* items, size_t item_size, size_t item_count, void* ctx) {
+    size_t data_size = item_size * item_count;
+
+    stringstream* buffer = reinterpret_cast<stringstream*>(ctx);
+    buffer->write(reinterpret_cast<const char*>(items), data_size);
+
+    return data_size;
+}
+Input download(const string& address)
 {
-    if (argc > 1)
+    stringstream buffer;
+    CURL *curl = curl_easy_init();
+    if(curl)
     {
-        CURL *curl = curl_easy_init();
-        if(curl)
+        CURLcode res;
+        curl_easy_setopt(curl, CURLOPT_URL, address.c_str());
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &buffer);
+        res = curl_easy_perform(curl);
+        curl_easy_cleanup(curl);
+        if(res)
         {
-            CURLcode res;
-            curl_easy_setopt(curl, CURLOPT_URL, argc);
-            res = curl_easy_perform(curl);
-        if (res != 0)
-        {
-            curl_easy_cleanup(curl);
+            cout <<  curl_easy_strerror(res);
             exit(1);
         }
-        }
     }
-    Input input;
+    return read_input(buffer, false);
+}
+int main (int argc, char* argv[])
+{
     const size_t SCREEN_WIDTH = 80;
     const size_t MAX_size = SCREEN_WIDTH - 3 - 1;
-    input = read_input (cin, true);
+    Input input;
+    if (argc > 1)
+    {
+        input = download(argv[1]);
+    }
+
+    else
+    {
+        input = read_input (cin, true);
+    }
     vector <string> color(input.bin_count);
     color_add(input.bin_count, color, cin);
     const auto bins = make_histogram(input);

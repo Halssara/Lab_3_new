@@ -14,9 +14,12 @@
 				<Compiler>
 					<Add option="-std=c++17" />
 					<Add option="-g" />
+					<Add directory="D:/Labs/Lab_3/curl/include" />
 				</Compiler>
 				<Linker>
 					<Add option="-static" />
+					<Add library="libcurl.dll.a" />
+					<Add directory="D:/Labs/Lab_3/curl/lib" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -36,6 +39,7 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename=".gitignore" />
 		<Unit filename="SVG.cpp" />
 		<Unit filename="histogram.cpp" />
 		<Unit filename="histogram.h">

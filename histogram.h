@@ -18,5 +18,5 @@ void show_histogram_svg(const vector<size_t>& bins, const size_t bin_count, vect
 void color_add(const size_t bin_count,vector <string>& color, istream& in);
 vector<size_t> make_histogram (Input input);
 vector<double> input_numbers(istream& in,size_t count);
-Input read_input (istream& in);
+Input read_input (istream& in, bool prompt);
 #endif // HISTOGRAM_H_INCLUDED

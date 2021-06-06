@@ -35,7 +35,11 @@ int main (int argc, char* argv[])
             CURLcode res;
             curl_easy_setopt(curl, CURLOPT_URL, argc);
             res = curl_easy_perform(curl);
+        if (res != 0)
+        {
             curl_easy_cleanup(curl);
+            exit(1);
+        }
         }
     }
     Input input;

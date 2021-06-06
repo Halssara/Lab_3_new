@@ -29,9 +29,14 @@ int main (int argc, char* argv[])
 {
     if (argc > 1)
     {
-        cout << argc;
-        cout << argv[0];
-        return 0;
+        CURL *curl = curl_easy_init();
+        if(curl)
+        {
+            CURLcode res;
+            curl_easy_setopt(curl, CURLOPT_URL, argc);
+            res = curl_easy_perform(curl);
+            curl_easy_cleanup(curl);
+        }
     }
     Input input;
     const size_t SCREEN_WIDTH = 80;

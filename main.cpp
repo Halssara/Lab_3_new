@@ -2,22 +2,31 @@
 #include <vector>
 using namespace std;
 #include "histogram.h"
+Input read_input (istream& in)
+{
+    Input data;
 
+    cerr << "Enter number count: ";
+    in >> data.number_count;
+
+    cerr << "Enter numbers: ";
+    data.numbers = input_numbers(in, data.number_count);
+
+    cerr << "Enter bin count: ";
+        in >> data.bin_count;
+
+    return data;
+}
 int main ()
 {
-    size_t number_count;
-    size_t bin_count;
+    Input input;
     const size_t SCREEN_WIDTH = 80;
     const size_t MAX_size = SCREEN_WIDTH - 3 - 1;
-    cerr << "Enter number count: ";
-    cin >> number_count;
-    cerr << "Enter bin count:";
-    cin >> bin_count;
-    vector <string> color(bin_count);
-    color_add(bin_count, color, cin);
-    const auto numbers = input_numbers(cin, number_count);
-    const auto bins = make_histogram(numbers, number_count, bin_count);
-    show_histogram_svg(bins, bin_count, color);
+    input = read_input (cin);
+    vector <string> color(input.bin_count);
+    color_add(input.bin_count, color, cin);
+    const auto bins = make_histogram(input);
+    show_histogram_svg(bins, input.bin_count, color);
     getchar ();
     return 0;
 }

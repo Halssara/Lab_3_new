@@ -19,12 +19,16 @@ Input read_input (istream& in, bool prompt)
 
         cerr << "Enter bin count: ";
         in >> data.bin_count;
+
+        cerr << "Enter color" << ": " << '\n';
+        data.color = colorsvg(in, data.bin_count);
     }
     else
     {
         in >> data.number_count;
         data.numbers = input_numbers(in, data.number_count);
         in >> data.bin_count;
+        data.color = colorsvg(in, data.bin_count);
     }
     return data;
 }
@@ -49,6 +53,15 @@ Input download(const string& address)
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &buffer);
         res = curl_easy_perform(curl);
         curl_easy_cleanup(curl);
+        if (!res)
+        {
+            curl_off_t cl;
+            res = curl_easy_getinfo(curl, CURLINFO_CONTENT_LENGTH_UPLOAD_T, &cl);
+            if(!res)
+            {
+                cerr << "Upload_size = " << cl;
+            }
+        }
         if(res)
         {
             cout <<  curl_easy_strerror(res);
@@ -71,10 +84,8 @@ int main (int argc, char* argv[])
     {
         input = read_input (cin, true);
     }
-    vector <string> color(input.bin_count);
-    color_add(input.bin_count, color, cin);
     const auto bins = make_histogram(input);
-    show_histogram_svg(bins, input.bin_count, color);
+    show_histogram_svg(bins, input.bin_count, input);
     getchar ();
     return 0;
 }

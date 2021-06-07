@@ -14,12 +14,12 @@
 				<Compiler>
 					<Add option="-std=c++17" />
 					<Add option="-g" />
-					<Add directory="D:/Labs/Lab_3/curl/include" />
+					<Add directory="C:/Users/u211-07/Desktop/lab3/Lab_3_new/curl/include" />
 				</Compiler>
 				<Linker>
 					<Add option="-static" />
 					<Add library="libcurl.dll.a" />
-					<Add directory="D:/Labs/Lab_3/curl/lib" />
+					<Add directory="C:/Users/u211-07/Desktop/lab3/Lab_3_new/curl/lib" />
 				</Linker>
 			</Target>
 			<Target title="Release">

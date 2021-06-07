@@ -2,15 +2,6 @@
 #include <iostream>
 using namespace std;
 
-void color_add(const size_t bin_count,vector <string>& color, istream& in)
-{
-    for (size_t i= 0; i < bin_count; i++)
-    {
-        //cerr << "Enter number color- "<< i+1 <<" ( 000000 - 999999) = "; ¬вод если пользователь сам его выполн€ет, а не ввод из текстового документа.
-        in >> color[i];
-    }
-}
-
 void
 svg_begin(double width, double height)
 {
@@ -40,7 +31,7 @@ void svg_rect(double x, double y, double width, double height, string stroke, st
 }
 
 void
-show_histogram_svg(const vector<size_t>& bins, const size_t bin_count, vector <string>& color)
+show_histogram_svg(const vector<size_t>& bins, const size_t bin_count, Input data)
 {
     const auto IMAGE_WIDTH = 400;
     const auto IMAGE_HEIGHT = 300;
@@ -67,7 +58,7 @@ show_histogram_svg(const vector<size_t>& bins, const size_t bin_count, vector <s
     int help_color = 0;
     for (size_t bin : bins )
     {
-        string COLOR = "#" + color[help_color];
+        string COLOR = "#" + data.color[help_color];
         const double bin_width = BLOCK_WIDTH * bin;
         svg_text(TEXT_LEFT, top + TEXT_BASELINE, to_string(bin));
         svg_rect(TEXT_WIDTH , top, bin_width * height, BIN_HEIGHT, "black", COLOR);

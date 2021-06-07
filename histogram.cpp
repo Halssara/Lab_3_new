@@ -46,7 +46,16 @@ make_histogram (Input data)
         }
     return bins;
 }
-
+vector <string>
+colorsvg (istream &in, size_t bin_count)
+{
+    vector <string> result(bin_count);
+    for (size_t i = 0; i < bin_count; i++)
+    {
+        in >> result[i];
+    }
+    return result;
+}
 vector<double>
 input_numbers(istream& in, size_t count)
 {

@@ -78,3 +78,65 @@
 
 1621918820 d:\labs\lab_3\curl\include\curl\typecheck-gcc.h
 
+1623051024 source:c:\users\u211-07\desktop\lab3\lab_3_new\histogram.cpp
+	"histogram.h"
+	<iostream>
+
+1623051063 c:\users\u211-07\desktop\lab3\lab_3_new\histogram.h
+	<vector>
+	<string>
+
+1623051170 source:c:\users\u211-07\desktop\lab3\lab_3_new\main.cpp
+	<iostream>
+	<vector>
+	<sstream>
+	<string>
+	"histogram.h"
+	<curl/curl.h>
+
+1623049543 source:c:\users\u211-07\desktop\lab3\lab_3_new\svg.cpp
+	"histogram.h"
+	<iostream>
+
+1623048150 c:\users\u211-07\desktop\lab3\lab_3_new\curl\include\curl\curl.h
+	"curlver.h"
+	"system.h"
+	<stdio.h>
+	<limits.h>
+	<osreldate.h>
+	<sys/types.h>
+	<time.h>
+	<winsock2.h>
+	<ws2tcpip.h>
+	<sys/select.h>
+	<sys/socket.h>
+	<sys/time.h>
+	<support/SupportDefs.h>
+	"easy.h"
+	"multi.h"
+	"urlapi.h"
+	"options.h"
+	"typecheck-gcc.h"
+
+1623048150 c:\users\u211-07\desktop\lab3\lab_3_new\curl\include\curl\curlver.h
+
+1623048150 c:\users\u211-07\desktop\lab3\lab_3_new\curl\include\curl\system.h
+	<winsock2.h>
+	<windows.h>
+	<ws2tcpip.h>
+	<sys/types.h>
+	<sys/socket.h>
+	<sys/poll.h>
+
+1623048150 c:\users\u211-07\desktop\lab3\lab_3_new\curl\include\curl\easy.h
+
+1623048150 c:\users\u211-07\desktop\lab3\lab_3_new\curl\include\curl\multi.h
+	"curl.h"
+
+1623048150 c:\users\u211-07\desktop\lab3\lab_3_new\curl\include\curl\urlapi.h
+	"curl.h"
+
+1623048150 c:\users\u211-07\desktop\lab3\lab_3_new\curl\include\curl\options.h
+
+1623048150 c:\users\u211-07\desktop\lab3\lab_3_new\curl\include\curl\typecheck-gcc.h
+

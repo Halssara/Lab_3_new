@@ -29,3 +29,23 @@
 	"histogram.h"
 	<iostream>
 
+1623054548 source:c:\users\u211-07\desktop\lab3\lab_3_new\histogram.cpp
+	"histogram.h"
+	<iostream>
+
+1623054548 c:\users\u211-07\desktop\lab3\lab_3_new\histogram.h
+	<vector>
+	<string>
+
+1623054548 source:c:\users\u211-07\desktop\lab3\lab_3_new\main.cpp
+	<iostream>
+	<vector>
+	"histogram.h"
+
+1623056171 source:c:\users\u211-07\desktop\lab3\lab_3_new\svg.cpp
+	"histogram.h"
+	<iostream>
+	<windows.h>
+	<sstream>
+	<string>
+

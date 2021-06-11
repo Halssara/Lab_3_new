@@ -44,6 +44,7 @@ write_data(void* items, size_t item_size, size_t item_count, void* ctx) {
 Input download(const string& address)
 {
     stringstream buffer;
+    curl_global_init(CURL_GLOBAL_ALL);
     CURL *curl = curl_easy_init();
     if(curl)
     {
